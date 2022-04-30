@@ -4,10 +4,9 @@ El proyecto funciona con la herramienta make para su ejecucion, por el momento s
 
 # Comandos
 - Para visualizar los comandos utilice el comando `make help`
-- Para correr el test de la libreria utilice el comando `make test`
+- Para correr los test de la libreria utilice el comando `make test_n`
+	- Donde `n` se refiere a cada parte del proyecto
 	- Al ejecutar el programa los archivos generados se guardaran en el directorio /gv, en caso de que desee modificar los parametros de los grafos que se generan, modifique el archivo main.py y vuelva a ejecutar el comando
 
 # En caso de no contar con la herramienta make
-Compile el archivo main.py 
-
-
+Compile los archivos parte_1 o parte_2(dependiendo de cual se planee observar), ejecutanto el comando `python`

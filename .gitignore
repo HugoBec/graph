@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 # ignores tags
 tags
+compile_commands.json
