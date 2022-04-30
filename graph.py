@@ -201,3 +201,111 @@ class Graph:
         file.close()
         return dot
 
+    ##### Segunda parte
+
+    def bfs(self, s):
+        """
+        bfs Breadth-First Search es un algoritmo
+        para recorrer o buscar estructuras de datos de grafos.
+        Comienza en el nodo s
+        y explora todos los nodos vecinos a la profundidad actual
+        profundidad antes de pasar a los nodos del siguiente nivel de profundidad.
+        :param s: nodo raíz para atravesar
+        :return g gráfico generado según BFS
+        """
+        g = Graph(attr={DIRECTED: True})
+        root = self.get_vertex(s)
+        root.attributes[DISCOVERED] = True
+        q = collections.deque()
+        adjacent_type = '+' if DIRECTED in self.attr and self.attr[
+            DIRECTED] else None
+        # Inserta el nodo raiz en el grafo y en la cola de espera
+        g.add_vertex(root)
+        q.append(s)
+
+        while (len(q) > 0):
+            v = q.popleft()
+            for e in self.get_adjacent_vertices_by_vertex(v, adjacent_type):
+                w = self.get_vertex(e)
+                if DISCOVERED not in w.attributes or w.attributes[
+                    DISCOVERED] is False:
+                    w.attributes[DISCOVERED] = True
+                    q.append(w.id)
+                    g.add_vertex(w)
+                    g.add_edge(edge.Edge(v, e), True)
+
+        # Para poder implementar otro Algoritmo de busqueda en el mismo grafo
+        # Se pone los atribudos de los nodos como no recorridos
+        for key in self.vertices:
+            self.vertices[key].attributes[DISCOVERED] = False
+
+        return g
+
+    def dfs(self, s):
+        """
+        dfs Depth-First Search (DFS) es un algoritmo para recorrer o buscar estructuras de datos en forma de árbol o grafo.
+        El algoritmo comienza en el nodo raíz y explora todo lo posible a lo largo de cada rama antes de retroceder.
+        :param s: nodo raíz a recorrer
+        :return g gráfico generado según DFS
+        """
+        g = Graph(attr={DIRECTED: True})
+        adjacent_type = '+' if DIRECTED in self.attr and self.attr[
+            DIRECTED] else None
+        # Insert s root node in stack 
+        stack = collections.deque()
+        # Initial node does not have origin, it is represented by # 
+        stack.append(('#', s))
+
+        while (len(stack) > 0):
+            (source, target) = stack.pop()
+            w = self.get_vertex(target)
+            if DISCOVERED not in w.attributes or w.attributes[
+                DISCOVERED] is False:
+                w.attributes[DISCOVERED] = True
+                g.add_vertex(w)
+                if (source != '#'):
+                    g.add_edge(edge.Edge(source, w.id), True)
+                for e in self.get_adjacent_vertices_by_vertex(w.id,
+                                                              adjacent_type):
+                    stack.append((w.id, e))
+
+        # Para poder implementar otro Algoritmo de busqueda en el mismo grafo
+        # Se pone los atribudos de los nodos como no recorridos
+        for key in self.vertices:
+            self.vertices[key].attributes[DISCOVERED] = False
+
+        return g
+
+    def dfs_r(self, s):
+        """
+        dfs_r Depth-First Search (DFSr) recursivo  es un algoritmo para recorrer o buscar estructuras de datos en forma de árbol
+        o estructuras de datos de grafos.
+        El algoritmo comienza en el nodo raíz y explora todo lo posible a lo largo de cada rama
+        antes de retroceder.
+        :param s: nodo raíz a recorrer
+        :return g gráfico generado según DFS
+        """
+        g = Graph(attr={DIRECTED: True})
+
+        # Para poder implementar otro Algoritmo de busqueda en el mismo grafo
+        # Se pone los atribudos de los nodos como no recorridos
+        for key in self.vertices:
+            self.vertices[key].attributes[DISCOVERED] = False
+
+        return self.dfs_rec(g, ('#', s))
+
+
+    def dfs_rec(self, g, s):
+        adjacent_type = '+' if DIRECTED in self.attr and self.attr[
+            DIRECTED] else None
+        (source, target) = s
+        w = self.get_vertex(target)
+        if DISCOVERED not in w.attributes or w.attributes[DISCOVERED] is False:
+            w.attributes[DISCOVERED] = True
+            g.add_vertex(w)
+            if (source != '#'):
+                g.add_edge(edge.Edge(source, w.id), True)
+            for e in self.get_adjacent_vertices_by_vertex(w.id, adjacent_type):
+                self.dfs_rec(g, (w.id, e))
+
+        return g
