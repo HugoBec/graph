@@ -23,6 +23,7 @@ dot_dfs = g_dfs.create_graphviz('Mesh_30_bfs')
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
+dot_dfs_r = g_dfs_r.create_graphviz('Mesh_30_bfs_r')
 
 print( 'Generando el grafo 100' )
 
