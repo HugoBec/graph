@@ -18,12 +18,12 @@ dot_bfs = g_bfs.create_graphviz('Mesh_30_bfs')
 print('...')
 
 g_dfs   = g.dfs(0)
-dot_dfs = g_dfs.create_graphviz('Mesh_30_bfs')
+dot_dfs = g_dfs.create_graphviz('Mesh_30_dfs')
 
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
-dot_dfs_r = g_dfs_r.create_graphviz('Mesh_30_bfs_r')
+dot_dfs_r = g_dfs_r.create_graphviz('Mesh_30_dfs_rec')
 
 print( 'Generando el grafo 100' )
 
@@ -38,12 +38,12 @@ dot_bfs = g_bfs.create_graphviz('Mesh_100_bfs')
 print('...')
 
 g_dfs   = g.dfs(0)
-dot_dfs = g_dfs.create_graphviz('Mesh_100_bfs')
+dot_dfs = g_dfs.create_graphviz('Mesh_100_dfs')
 
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
-dot_dfs_r = g_dfs_r.create_graphviz('Mesh_100_bfs_rec')
+dot_dfs_r = g_dfs_r.create_graphviz('Mesh_100_dfs_rec')
 
 print( 'Generando el grafo 500' )
 
@@ -58,12 +58,12 @@ dot_bfs = g_bfs.create_graphviz('Mesh_500_bfs')
 print('...')
 
 g_dfs   = g.dfs(0)
-dot_dfs = g_dfs.create_graphviz('Mesh_500_bfs')
+dot_dfs = g_dfs.create_graphviz('Mesh_500_dfs')
 
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
-dot_dfs_r = g_dfs_r.create_graphviz('Mesh_500_bfs_rec')
+dot_dfs_r = g_dfs_r.create_graphviz('Mesh_500_dfs_rec')
 
 print('Grafos de Malla completado')
 print('..........................')
@@ -78,17 +78,17 @@ dot  = g.create_graphviz('Erdos_Rengy_30')
 print( 'Iniciando los algoritmos de busqueda' )
 
 g_bfs   = g.bfs(0)
-dot_bfs = g_bfs.create_graphviz('Erdos_Rengy_bfs_30')
+dot_bfs = g_bfs.create_graphviz('Erdos_Rengy_30_bfs')
 
 print('...')
 
 g_dfs   = g.dfs(0)
-dot_dfs = g_dfs.create_graphviz('Erdos_Rengy_dfs_30')
+dot_dfs = g_dfs.create_graphviz('Erdos_Rengy_30_dfs')
 
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
-dot_dfs_r = g_dfs_r.create_graphviz('Erdos_Rengy_dfs_r_30')
+dot_dfs_r = g_dfs_r.create_graphviz('Erdos_Rengy_30_dfs_rec')
 
 print( 'Generando el grafo 100' )
 
@@ -389,7 +389,7 @@ dot_dfs = g_dfs.create_graphviz('Dorogovtsev_Mendes_500_dfs')
 print('...')
 
 g_dfs_r   = g.dfs_r(0)
-dot_dfs_r = g_dfs_r.create_graphviz('Dorogovtsev_Mendes_500_dfs')
+dot_dfs_r = g_dfs_r.create_graphviz('Dorogovtsev_Mendes_500_dfs_rec')
 
 print('Grafos de Dorogovtsev Mendes simple completado')
 print('..........................')
