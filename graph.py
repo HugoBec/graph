@@ -309,3 +309,83 @@ class Graph:
                 self.dfs_rec(g, (w.id, e))
 
         return g
+
+    def dijkstra(self, s, t):
+        """
+        dijkstra is an algorithm for finding the shortest paths between nodes in a graph.
+        :param s: node source
+        :param t: node target
+        :return g graph generated with the shortest path from source to target
+        """
+        l = []
+        dist = {}
+        prev = {}
+        discovered = {}
+        for v in self.get_vertices():
+            dist[v] = float('inf')
+            prev[v] = None
+            discovered[v] = False
+        dist[s] = 0
+        l.append((s, dist[s]))
+        while len(l) != 0:
+            u = min(l, key=lambda x: x[1])
+            l.remove(u)
+            u = u[0]
+            discovered[u] = True
+            if u == t:
+                break
+            for v in self.get_adjacent_vertices_by_vertex(u):
+                if not discovered[v]:
+                    alt = dist[u] + self.get_edge((u, v)).attr["WEIGHT"]
+                    if alt < dist[v]:
+                        dist[v] = alt
+                        prev[v] = u
+                        l.append((v, dist[v]))
+        # Create a graph according to visited nodes store in prev array
+        u = t
+        g = Graph(attr={DIRECTED: True})
+        while u is not None:
+            g.add_vertex(vertex.Vertex(u, {"WEIGHT": dist[u]}))
+            if prev[u] is not None:
+                g.add_vertex(vertex.Vertex(prev[u], {"WEIGHT": dist[prev[u]]}))
+                g.add_edge(edge.Edge(prev[u], u))
+                u = prev[u]
+            else:
+                break
+        return g
+
+    def dijkstra_tree(self, s):
+        """
+        dijkstra_tree is an algorithm for finding tree of cost for each node according Dijkstra's algorithm.
+        :param s: node source
+        :param t: node target
+        :return g graph generated with the shortest path from source to target 
+        """
+        l = []
+        dist = {}
+        prev = {}
+        discovered = {}
+        g = Graph(attr={DIRECTED: True})
+        g.add_vertex(vertex.Vertex(s, {"WEIGHT": 0}))
+        for v in self.get_vertices():
+            dist[v] = float('inf')
+            prev[v] = None
+            discovered[v] = False
+        dist[s] = 0
+        l.append((s, dist[s]))
+        while len(l) != 0:
+            u = min(l, key=lambda x: x[1])
+            l.remove(u)
+            u = u[0]
+            discovered[u] = True
+            for v in self.get_adjacent_vertices_by_vertex(u):
+                if not discovered[v]:
+                    alt = dist[u] + self.get_edge((u, v)).attr["WEIGHT"]
+                    if alt < dist[v]:
+                        dist[v] = alt
+                        prev[v] = u
+                        l.append((v, dist[v]))
+                        g.add_vertex(vertex.Vertex(v, {"WEIGHT": dist[v]}))
+                        g.add_edge(edge.Edge(u, v, {"WEIGHT": dist[v]}))
+
+        return 

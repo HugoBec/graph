@@ -1,0 +1,17 @@
+digraph {
+	29 [label="Node: 29
+Node source: 0
+WEIGHT (10)"]
+	9 [label="Node: 9
+Node source: 0
+WEIGHT (7)"]
+	2 [label="Node: 2
+Node source: 0
+WEIGHT (2)"]
+	0 [label="Node: 0
+Node source: 0
+WEIGHT (0)"]
+	9 -> 29
+	2 -> 9
+	0 -> 2
+}
