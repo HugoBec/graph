@@ -1,25 +1,5 @@
 digraph {
 	499 [label="Node: 499
 Node source: 0
-WEIGHT (28)"]
-	128 [label="Node: 128
-Node source: 0
-WEIGHT (18)"]
-	110 [label="Node: 110
-Node source: 0
-WEIGHT (9)"]
-	5 [label="Node: 5
-Node source: 0
-WEIGHT (6)"]
-	1 [label="Node: 1
-Node source: 0
-WEIGHT (1)"]
-	0 [label="Node: 0
-Node source: 0
-WEIGHT (0)"]
-	128 -> 499
-	110 -> 128
-	5 -> 110
-	1 -> 5
-	0 -> 1
+WEIGHT (inf)"]
 }

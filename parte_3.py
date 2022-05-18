@@ -44,7 +44,7 @@ print('..........................')
 print( 'Algoritmo de Erdos-Rengy')
 print( 'Generando el grafo de 30' )
 
-g = models.erdos_rengy( 30 , 30 )
+g = models.erdos_rengy( 30 , 29 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )
@@ -56,7 +56,7 @@ dot_d = g_d.create_graphviz( 'Erdos_Rengy_30_Dijkstra',"WEIGHT", 0)
 
 print( 'Generando el grafo de 500' )
 
-g = models.erdos_rengy( 500 , 500 )
+g = models.erdos_rengy( 500 , 499 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )
@@ -85,7 +85,7 @@ dot_d = g_d.create_graphviz( 'Gilbert_30_Dijkstra',"WEIGHT", 0)
 
 print( 'Generando el grafo de 500' )
 
-g = models.gilbert( 500, 0.04 )
+g = models.gilbert( 500, 0.2 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )
@@ -102,7 +102,7 @@ print('..........................')
 print( 'Algoritmo Geográfico simple')
 print( 'Generando el grafo 30' )
 
-g = models.geo_simple( 30, 0.9 )
+g = models.geo_simple( 30, 0.4 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )
@@ -131,7 +131,7 @@ print('..........................')
 print( 'Algoritmo Barabasi')
 print( 'Generando el grafo 30' )
 
-g = models.barabasi( 30, 3 )
+g = models.barabasi( 30, 7 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )
@@ -143,7 +143,7 @@ dot_d = g_d.create_graphviz( 'Barabasi_30_Dijkstra',"WEIGHT", 0)
 
 print( 'Generando el grafo de 500' )
 
-g = models.barabasi( 500, 5 )
+g = models.barabasi( 500, 30 )
 
 for i in g.edges.values():
     i.attr["WEIGHT"] = randint( 1, 10 )

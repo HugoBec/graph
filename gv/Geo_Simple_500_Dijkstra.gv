@@ -1,29 +1,25 @@
 digraph {
 	499 [label="Node: 499
 Node source: 0
-WEIGHT (6)"]
-	445 [label="Node: 445
+WEIGHT (7)"]
+	297 [label="Node: 297
 Node source: 0
 WEIGHT (5)"]
-	439 [label="Node: 439
+	232 [label="Node: 232
 Node source: 0
 WEIGHT (4)"]
-	153 [label="Node: 153
+	206 [label="Node: 206
 Node source: 0
 WEIGHT (3)"]
-	132 [label="Node: 132
+	156 [label="Node: 156
 Node source: 0
 WEIGHT (2)"]
-	203 [label="Node: 203
-Node source: 0
-WEIGHT (1)"]
 	0 [label="Node: 0
 Node source: 0
 WEIGHT (0)"]
-	445 -> 499
-	439 -> 445
-	153 -> 439
-	132 -> 153
-	203 -> 132
-	0 -> 203
+	297 -> 499
+	232 -> 297
+	206 -> 232
+	156 -> 206
+	0 -> 156
 }

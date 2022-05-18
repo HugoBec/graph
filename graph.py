@@ -312,10 +312,10 @@ class Graph:
 
     def dijkstra(self, s, t):
         """
-        dijkstra is an algorithm for finding the shortest paths between nodes in a graph.
-        :param s: node source
-        :param t: node target
-        :return g graph generated with the shortest path from source to target
+        Dijkstra es un algoritmo que busca el camino mas corto entre dos nodos en un grafo
+        :param s: node fuente
+        :param t: node destino
+        :return grafo generado con el camino mas corto entre los nodos
         """
         l = []
         dist = {}
@@ -341,7 +341,7 @@ class Graph:
                         dist[v] = alt
                         prev[v] = u
                         l.append((v, dist[v]))
-        # Create a graph according to visited nodes store in prev array
+        # Crea un grafo de acuerdo a los nodos visitados, almacenados en el arreglo anterior
         u = t
         g = Graph(attr={DIRECTED: True})
         while u is not None:
@@ -356,10 +356,11 @@ class Graph:
 
     def dijkstra_tree(self, s):
         """
-        dijkstra_tree is an algorithm for finding tree of cost for each node according Dijkstra's algorithm.
-        :param s: node source
-        :param t: node target
-        :return g graph generated with the shortest path from source to target 
+        El árbol de dijkstra es un algoritmo para encontrar el árbol de costos
+        de cada nodo de acuerdo al algoritmo de dijkstra;
+        :param s: node fuente
+        :param t: nodo objetivo
+        :return g graph generated with the shortest path from source to target
         """
         l = []
         dist = {}
@@ -388,4 +389,4 @@ class Graph:
                         g.add_vertex(vertex.Vertex(v, {"WEIGHT": dist[v]}))
                         g.add_edge(edge.Edge(u, v, {"WEIGHT": dist[v]}))
 
-        return 
+        return
