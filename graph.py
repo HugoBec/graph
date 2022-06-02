@@ -26,14 +26,14 @@ class Graph:
            param attr:     Propiedades del grafo
         """
         if vertices is None:
-            vertices = {}
+            vertices  = {}
         self.vertices = vertices
 
         if edges is None:
-            edges = {}
+            edges  = {}
         self.edges = edges
 
-        self.attr = attr
+        self.attr  = attr
 
     def add_vertex(self, vertex):
         """ 
@@ -390,3 +390,109 @@ class Graph:
                         g.add_edge(edge.Edge(u, v, {"WEIGHT": dist[v]}))
 
         return
+
+    def find(self, parent, i):
+        """
+        find is a utility function to find set of an element i
+        :param parent: parent node source
+        :param i: node source
+        """
+        if parent[i] == i:
+            return i
+        return self.find(parent, parent[i])
+
+    def KruskalD(self):
+        """
+        KruskalD is a function based on Krustal's algorithm to find a minimum spanning
+        forest of an undirected edge-weighted graph.
+        :return g graph representing minimum spannng forest
+        """
+        g = Graph(attr={DIRECTED: False})
+        # Create set for each v of V[G]
+        parent = []
+        rank   = []
+        for v in self.get_vertices():
+            parent.append(v)
+            rank.append(0)
+
+        # Sort edges by weight
+        q = sorted(self.edges.items(), key=lambda e: e[1].attr["WEIGHT"])
+        for e in q:
+            (u, v) = e[0]
+            v1 = self.find(parent, u)
+            v2 = self.find(parent, v)
+            if v1 != v2:
+                g.add_vertex(vertex.Vertex(u))
+                g.add_vertex(vertex.Vertex(v))
+                g.add_edge(edge.Edge(u, v, {"WEIGHT": e[1].attr["WEIGHT"]}))
+                if rank[v1] < rank[v2]:
+                    parent[v1]  = v2
+                    rank[v2]   += 1
+                else:
+                    parent[v2]  = v1
+                    rank[v1]   += 1
+        return g
+
+    def Kruskal(self):
+        """
+        Kruskal is a function based on Inverse Krustal's algorithm to find a minimum
+        spanning forest of an undirected edge-weighted graph.
+        :return g graph representing minimum spannng forest
+        """
+        g = self.clone()
+        # Sort edges by weight descendent
+        q = sorted(self.edges.items(), key=lambda e: e[1].attr["WEIGHT"],
+                   reverse=True)
+        for e in q:
+            # remove e  
+            g.edges.pop(e[0])
+            # clear weight
+            for k in self.vertices:
+                g.vertices[k].attributes["DISCOVERED"] = False
+            # valid if there is connected graph 
+            if len(g.vertices) != len(g.bfs(0).vertices):
+                g.add_edge(e[1])
+        return g
+
+    def Prim(self):
+        """
+        Prim is a function based on  Prim's algorithm to find a minimum
+        spanning forest of an undirected edge-weighted graph.
+        :return g graph representing minimum spannng forest
+        """
+        g = Graph(attr={DIRECTED: False})
+        distance = [sys.maxsize] * len(self.vertices)
+        parent   = [None] * len(self.vertices)
+        set      = [False] * len(self.vertices)
+
+        distance[0] = 0
+        parent[0] = -1
+
+        for i in self.vertices:
+            # Search vertex with minimum distance
+            min_index = 0
+            min       = sys.maxsize
+            for v in self.vertices:
+                if distance[v] < min and set[v] is False:
+                    min       = distance[v]
+                    min_index = v
+            u = min_index
+
+            # Add u vertex in set to not use it in other iteration 
+            set[u] = True
+            g.add_vertex(vertex.Vertex(u))
+
+            # Iterate all adjacent vertices of u vertex and update distance 
+            for v in self.get_adjacent_vertices_by_vertex(u):
+                if set[v] is False and distance[v] > \
+                        self.get_edge((u, v)).attr["WEIGHT"]:
+                    distance[v] = self.get_edge((u, v)).attr["WEIGHT"]
+                    parent[v]   = u
+
+        for i in self.vertices:
+            if i == 0:
+                continue
+            if parent[i] is not None:
+                g.add_edge(edge.Edge(parent[i], i, {"WEIGHT": self.get_edge((parent[i], i)).attr["WEIGHT"]}))
+
+        return g

@@ -10,4 +10,7 @@ El proyecto funciona con la herramienta make para su ejecucion, por el momento s
 - Puede borrar todos los archivos `.gv` empleando el comando `make clean`; si decide emplearlo deberá crear nuevamente la carpeta `gv` para poder almacenar los archivos.
 
 # En caso de no contar con la herramienta make
-Compile los archivos parte_1, parte_2 o parte_3 (dependiendo de cual se planee observar), ejecutanto el comando `python`.
+Compile los archivos parte_1, parte_2, parte_3 o parte_4 (dependiendo de cual se planee observar), ejecutanto el comando `python`.
+
+# Imágenes generadas
+lAS IMÁGENES GENERADAS DE LOS PROYECTOS ANTERIORES SE ENCUENTRAN EN LA CARPETA `images` en la cual contiene 4 subcarpetas con las imágenes generadas de los proyectos anteriores.

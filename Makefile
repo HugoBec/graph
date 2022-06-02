@@ -10,8 +10,10 @@ help:
 	@echo " 	  Corre el archivo Parte_1.py que da lugar a los archivos .gv de la parte 1 del proyecto "
 	@echo "-> make test_2: "
 	@echo " 	  Corre el archivo Parte_2.py que da lugar a los archivos .gv de la parte 2 del proyecto "
-	@echo "-> make test_4: "
+	@echo "-> make test_3: "
 	@echo " 	  Corre el archivo Parte_3.py que da lugar a los archivos .gv de la parte 3 del proyecto "
+	@echo "-> make test_4: "
+	@echo " 	  Corre el archivo Parte_4.py que da lugar a los archivos .gv de la parte 3 del proyecto "
 
 clean:
 	@echo " Eliminando archivos .gv "
@@ -35,3 +37,9 @@ test_3:
 	@echo " Algoritmos de Dijkstra "
 	@echo " Ejecutando el test... "
 	${COMPILER} parte_3.py
+
+test_4: 
+	@echo " Parte_4 "
+	@echo " Algoritmos de Kruskal "
+	@echo " Ejecutando el test... "
+	${COMPILER} parte_4.py
