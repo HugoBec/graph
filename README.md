@@ -13,4 +13,4 @@ El proyecto funciona con la herramienta make para su ejecucion, por el momento s
 Compile los archivos parte_1, parte_2, parte_3 o parte_4 (dependiendo de cual se planee observar), ejecutanto el comando `python`.
 
 # Imágenes generadas
-lAS imágenes generadas de los proyectos anteriores se encuentran en la carpeta `images` en la cual contiene 4 subcarpetas con las imágenes generadas de los proyectos anteriores.
+Las imágenes generadas de los proyectos anteriores se encuentran en la carpeta `images` en la cual contiene 4 subcarpetas con las imágenes generadas de los proyectos anteriores.
